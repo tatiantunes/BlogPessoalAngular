@@ -1,0 +1,18 @@
+ul.social-network li{
+    display: inline;
+    margin: 0;
+    padding: 5px;
+}
+
+.fa{
+    color: white;
+    font-size: 35pt;
+    padding: 10px;
+}
+
+
+.fa:hover{
+    color: palevioletred;
+    font-size: 35pt;
+    padding: 10px;
+}
