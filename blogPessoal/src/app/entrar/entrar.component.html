@@ -6,18 +6,18 @@
                     <h1 class="text-center mb-3">Entrar</h1>
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
-                        <input type="text" id="usuario" name="usuario" placeholder="Digite seu nome" class="form-control"/>
+                        <input [(ngModel)]='userLogin.usuario' type="text" id="usuario" name="usuario" placeholder="Digite seu nome" class="form-control"/>
 
 
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" class="form-control"/>
+                        <input [(ngModel)]='userLogin.senha' type="password" id="senha" name="senha" placeholder="Digite sua senha" class="form-control"/>
 
 
                     </div>
                     <div class=" d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success">Entrar</button>
+                        <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
                     </div>
                     <hr class="mt-5 mb-5">
                     <p class="text-center">Não tem nenhuma conta. <a routerLink = '/cadastrar'>Cadastre-se</a></p>
