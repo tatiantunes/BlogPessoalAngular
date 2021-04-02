@@ -15,16 +15,17 @@
                                 <mat-form-field appearance="outline">
                                     <mat-label>Nome</mat-label>
                                     <input matInput placeholder="Placeholder" required [(ngModel)]='user.nome'
-                                        type="text" id="nome" name="nome" placeholder="Digite seu nome"  />
+                                        type="text" id="nome" name="nome" placeholder="Digite seu nome" />
                                     <mat-icon matSuffix>public</mat-icon>
-                                      <!--função para mostrar o erro por uma caracteristica no controle do atributo nome//ngif tem o mesmo sintaxe que o if da programação-->
-            <mat-error *ngIf="nome.invalid ">{{getErrorMessageNome()}} </mat-error>
-            <mat-error *ngIf=" nome.hasError('minlength') ">
-              <span>Nome
-                precisa ter mais de 2 caracteres </span>
-            </mat-error>
-            <mat-error *ngIf=" nome.hasError('maxlength') "><span>Nome precisa ter menos de 6 caracteres </span>
-            </mat-error>
+                                    <!--função para mostrar o erro por uma caracteristica no controle do atributo nome//ngif tem o mesmo sintaxe que o if da programação-->
+                                    <mat-error *ngIf="nome.invalid ">{{getErrorMessageNome()}} </mat-error>
+                                    <mat-error *ngIf=" nome.hasError('minlength') ">
+                                        <span>Nome
+                                            precisa ter mais de 2 caracteres </span>
+                                    </mat-error>
+                                    <mat-error *ngIf=" nome.hasError('maxlength') "><span>Nome precisa ter menos de 6
+                                            caracteres </span>
+                                    </mat-error>
                                 </mat-form-field>
                             </p>
 
@@ -52,7 +53,8 @@
                                     <mat-label>Tipo de Usuario</mat-label>
                                     <mat-icon matSuffix>safety_divider</mat-icon>
                                     <!--Estabelecer um controle no atributo tipodeUsuario-->
-                                    <mat-select matNativeControl required id="tipo" name="tipo" [(ngModel)]='user.tipoUsuario'>
+                                    <mat-select matNativeControl required id="tipo" name="tipo"
+                                        [(ngModel)]='user.tipoUsuario'>
                                         <mat-option value="normal">Normal</mat-option>
                                         <mat-option value="adm">Admin</mat-option>
                                     </mat-select>
