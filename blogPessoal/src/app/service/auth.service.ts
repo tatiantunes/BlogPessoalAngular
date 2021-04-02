@@ -9,19 +9,19 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class AuthService {
-
+  baseURL = environment.server + environment.port
   constructor(private http:HttpClient) { }
 
   entrar(userLogin:UserLogin):Observable<UserLogin>{
-    return this.http.post<UserLogin>('http://localhost:8080/usuarios/logar',userLogin)
+    return this.http.post<UserLogin>(`${this.baseURL}/usuarios/logar`,userLogin)
   }
 
   cadastrar(user:User):Observable<User>{
-    return this.http.post<User>('http://localhost:8080/usuarios/cadastrar',user)
+    return this.http.post<User>(`${this.baseURL}/usuarios/cadastrar`,user)
 
   }
 
-  logado(){
+  logado(){ 
     let ok :boolean = false
     if(environment.token != '')
     {

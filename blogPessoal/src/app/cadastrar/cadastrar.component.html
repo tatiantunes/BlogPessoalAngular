@@ -6,53 +6,88 @@
         <div class="col-md-6 mt-5 mb-5">
             <div class="row d-flex justify-content-center align-items-center">
 
-                <div class="col-md-10">
+                <div class="col-md-10 ">
 
                     <h1 class="text-center">Cadastro</h1>
+                    <div class="py-5 ml-2">
+                        <div class="formlado">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Nome</mat-label>
+                                    <input matInput placeholder="Placeholder" required [(ngModel)]='user.nome'
+                                        type="text" id="nome" name="nome" placeholder="Digite seu nome"  />
+                                    <mat-icon matSuffix>public</mat-icon>
+                                      <!--função para mostrar o erro por uma caracteristica no controle do atributo nome//ngif tem o mesmo sintaxe que o if da programação-->
+            <mat-error *ngIf="nome.invalid ">{{getErrorMessageNome()}} </mat-error>
+            <mat-error *ngIf=" nome.hasError('minlength') ">
+              <span>Nome
+                precisa ter mais de 2 caracteres </span>
+            </mat-error>
+            <mat-error *ngIf=" nome.hasError('maxlength') "><span>Nome precisa ter menos de 6 caracteres </span>
+            </mat-error>
+                                </mat-form-field>
+                            </p>
 
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input [(ngModel)] ='user.nome' type="text" id="nome" name="nome" placeholder="Digite seu nome" class="form-control" />
+                            <p>
+                                <mat-form-field appearance="outline" class="ml-5 ">
+                                    <mat-label>Usuario</mat-label>
+                                    <input matInput placeholder="Placeholder" required [(ngModel)]='user.usuario'
+                                        type="text" id="usuario" name="usuario" placeholder="Digite seu usuario" />
+                                    <mat-icon matSuffix>account_circle</mat-icon>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                        <div class="formlado">
+                            <p>
+                                <mat-form-field appearance="outline" class="">
+                                    <mat-label>Link da Foto</mat-label>
+                                    <input matInput placeholder="Placeholder" required [(ngModel)]='user.foto'
+                                        type="text" id="foto" name="foto" placeholder="Seu link" />
+                                    <mat-icon matSuffix>insert_photo</mat-icon>
+                                </mat-form-field>
+                            </p>
+
+                            <p>
+                                <mat-form-field appearance="outline" class="ml-5 ">
+                                    <mat-label>Tipo de Usuario</mat-label>
+                                    <mat-icon matSuffix>safety_divider</mat-icon>
+                                    <!--Estabelecer um controle no atributo tipodeUsuario-->
+                                    <mat-select matNativeControl required id="tipo" name="tipo" [(ngModel)]='user.tipoUsuario'>
+                                        <mat-option value="normal">Normal</mat-option>
+                                        <mat-option value="adm">Admin</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </p>
+
+                        </div>
+                        <div class="formlado">
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Senha</mat-label>
+                                    <input matInput placeholder="Placeholder" required (input)='confirmSenha($event)'
+                                        type="password" id="senha" name="senha" placeholder="Digite sua senha" />
+                                    <mat-icon matSuffix>vpn_key</mat-icon>
+                                </mat-form-field>
+                            </p>
+
+                            <p>
+                                <mat-form-field appearance="outline" class="ml-5 ">
+                                    <mat-label>Confirmar Senha</mat-label>
+                                    <input matInput placeholder="Placeholder" required [(ngModel)]='user.senha'
+                                        type="password" id="confirmSenha" name="confirmSenha"
+                                        placeholder="Confirme sua senha" />
+                                    <mat-icon matSuffix>vpn_key</mat-icon>
+                                </mat-form-field>
+                            </p>
+                        </div>
 
 
                     </div>
-                    <div class="form-group">
-                        <label for="usuario">Usuario</label>
-                        <input [(ngModel)] ='user.usuario' type="text" id="usuario" name="usuario" placeholder="Digite seu nome"
-                            class="form-control" />
 
 
-                    </div>
-                    <div class="form-group">
-                        <label for="foto">Link da foto</label>
-                        <input [(ngModel)] ='user.foto' type="text" id="foto" name="foto" placeholder="Seu link" class="form-control" />
 
-
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha</label>
-                        <input (input)='confirmSenha($event)' type="password" id="senha" name="senha" placeholder="Digite sua senha"
-                            class="form-control" />
-
-
-                    </div>
-                    <div class="form-group">
-                        <label for="confirmSenha">Confirmar Senha</label>
-                        <input [(ngModel)] ='user.senha' type="password" id="confirmSenha" name="confirmSenha" placeholder="Confirme sua senha"
-                            class="form-control" />
-
-
-                    </div>
-                    <div class="form-group">
-                        <label for="tipo">Tipo de Usuario</label>
-                        <select type="" id="tipo" name="tipo" class="form-control" (change) = 'tipoUser($event)'>
-                            <option>Selecione um tipo de Usuario</option>
-                            <option value="normal">Normal</option>
-                            <option value="adm">Admin</option>
-                        </select>
-                    </div>
                     <div class=" d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger mr-4" routerLink = '/entrar'>Cancelar</button>
+                        <button type="submit" class="btn btn-danger mr-4" routerLink='/entrar'>Cancelar</button>
                         <button type="submit" class="btn btn-success" (click)='cadastrar()'>Cadastrar</button>
                     </div>
 

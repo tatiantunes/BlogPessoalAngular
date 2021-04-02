@@ -1,21 +1,33 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="row ">
         <div class="col-md-6">
             <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-md-6 py-5">
+                <div class="col-md-6 py-5 mt-5">
                     <h1 class="text-center mb-3">Entrar</h1>
-                    <div class="form-group">
-                        <label for="usuario">Usuario</label>
-                        <input [(ngModel)]='userLogin.usuario' type="text" id="usuario" name="usuario" placeholder="Digite seu nome" class="form-control"/>
-
-
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha</label>
-                        <input [(ngModel)]='userLogin.senha' type="password" id="senha" name="senha" placeholder="Digite sua senha" class="form-control"/>
-
-
-                    </div>
+                    <p class="mt-5">
+                    <mat-form-field appearance="outline"  class="ml-5 ">
+                        <mat-label>Nome</mat-label>
+                        <input matInput placeholder="Placeholder" required [(ngModel)]='userLogin.usuario' type="text" id="usuario" name="usuario" placeholder="Digite seu nome" >
+                        
+                        <mat-icon matSuffix>public</mat-icon>
+                        
+                      </mat-form-field>
+                    </p>
+                    
+                    <p>
+                        <mat-form-field appearance="outline"  class="ml-5">
+                            <mat-label>Senha</mat-label>
+                            <!--Estabelecer um controle no atributo senha-->
+                            <!--Atributo hide que condiciona a mudança do input type password para input text condicioando a visualização da senha-->
+                            <input matInput [type]="hide ? 'password' : 'text'"  required  [(ngModel)]='userLogin.senha'  id="senha" name="senha" placeholder="Digite sua senha" >
+                            <!--função para mostrar o erro por uma caracteristica no controle do atributo senha //ngif tem o mesmo sintaxe que o if da programação-->
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                              [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                          </mat-form-field>
+                    </p>
+                  
                     <div class=" d-flex justify-content-center">
                         <button type="submit" class="btn btn-success" (click)='entrar()'>Entrar</button>
                     </div>
