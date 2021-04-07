@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { environment } from './../../environments/environment.prod';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../model/User';
+import { AlertasService } from '../service/alertas.service';
 
 @Component({
   selector: 'app-inicio',
@@ -29,7 +30,8 @@ export class InicioComponent implements OnInit {
     private router: Router,
     private postagemService: PostagemService,
     private temaService: TemaService,
-    private auth: AuthService
+    private auth: AuthService,
+    private alertas: AlertasService
   ) { }
 
   ngOnInit() {
@@ -81,7 +83,7 @@ export class InicioComponent implements OnInit {
     this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
       this.postagem = resp
       console.log(this.postagem)
-      alert('Postagem realizada com sucesso!')
+      this.alertas.showAlertSuccess('Postagem realizada com sucesso!')
       this.postagem = new Postagem()
       this.getAllPostagens()
     })
